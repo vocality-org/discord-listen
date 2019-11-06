@@ -1,6 +1,6 @@
 {
     "name": "discord-response-mock",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Makes the behavior of your discord bot testable",
     "main": "build/index.js",
     "author": "Julian Kaindl <kaindl745@gmail.com>",
