@@ -1,6 +1,6 @@
 # Discord Response Mock 
 
-> Making the behavior of your discord bot testable.
+> Making the behavior of your discord bot testable
 
 <br/>
 <p>
@@ -20,15 +20,13 @@ For more information take a look at the [setup FAQ](guild_bot_setup.md).
 
 **Install**
 
-:exclamation: This package relies on the availability of the specified discord guild. **Do not use this in production code**.
+:exclamation: This package relies on the availability of the specified discord guild.
 
 ```
 npm install --save-dev discord-response-mock
 ```
 
 ## Examples
-
-This examples are simplified. You need to call `.cleanup()` on the client to delete temporary channels and stop the test bot and wrap the `await`s in an `async`.
 
 ### Responses
 
@@ -37,7 +35,7 @@ This examples are simplified. You need to call `.cleanup()` on the client to del
 ```js
 import { ResponseClient } from 'discord-response-mock';
 
-const client = await new ResponseClient().setup('[YOUR_GUILD_ID]', '[YOUR_BOT_TOKEN]');
+const client = await new ResponseClient().setup('[TEST_GUILD_ID]', '[TEST_BOT_TOKEN]');
 
 client.write('message content', response => {
     console.log(response.content);
@@ -153,4 +151,4 @@ const opts = {
 
 ### MockClient
 
-Allows you to mock different discord.js objects. This is achieved by creating a temporary channel and sending them message there.
+Allows you to mock different discord.js objects. This is achieved by creating a temporary channel and sending the message there.
