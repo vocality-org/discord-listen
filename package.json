@@ -1,14 +1,27 @@
 {
     "name": "discord-response-mock",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "Makes the behavior of your discord bot testable",
     "main": "build/index.js",
     "author": "Julian Kaindl <kaindl745@gmail.com>",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/KaindlJulian/discord-response-mock.git"
+    },
+    "homepage": "https://github.com/KaindlJulian/discord-response-mock",
+    "bugs": {
+        "url": "https://github.com/KaindlJulian/discord-response-mock/issues"
+    },
+    "keywords": [
+        "discord",
+        "discord.js",
+        "testing",
+        "mocking"
+    ],
     "scripts": {
         "start": "ts-node src/index.ts",
-        "build": "tsc -p .",
-        "prepublish": "npm run build"
+        "build": "tsc -p ."
     },
     "dependencies": {
         "discord.js": "^11.5.1"
