@@ -1,6 +1,11 @@
-# Discord Response Mock
+# Discord Response Mock 
 
 > Making the behavior of your discord bot testable.
+
+<br/>
+<p>
+<a href="https://github.com/KaindlJulian/discord-response-mock/actions?query=workflow%3Abuild"><img src="https://github.com/KaindlJulian/discord-response-mock/workflows/build/badge.svg"></a>
+</p>
 
 ## Prerequisites
 
@@ -66,6 +71,11 @@ describe('ping', () => {
             done();
         })
     });
+});
+
+after(done => {
+    await client.cleanup();
+    done();
 });
 ```
 
