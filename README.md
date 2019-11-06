@@ -4,7 +4,8 @@
 
 <br/>
 <p>
-<a href="https://github.com/KaindlJulian/discord-response-mock/actions?query=workflow%3Abuild"><img src="https://github.com/KaindlJulian/discord-response-mock/workflows/build/badge.svg"></a>
+<a href="https://github.com/KaindlJulian/discord-response-mock/actions?query=workflow%3Abuild"><img alt="build" src="https://github.com/KaindlJulian/discord-response-mock/workflows/build/badge.svg"></a>
+<a href="https://www.npmjs.com/package/discord-response-mock"><img alt="npm" src="https://img.shields.io/npm/v/discord-response-mock?color=blue&label=%20npm"></a>
 </p>
 
 ## Prerequisites
