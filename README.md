@@ -72,6 +72,11 @@ describe('ping', () => {
         })
     });
 });
+
+after(done => {
+    await client.cleanup();
+    done();
+});
 ```
 
 ### Mocking
