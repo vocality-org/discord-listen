@@ -36,7 +36,11 @@ export default class TestBot extends Discord.Client {
     getResponseTo(content: string, timeout: number): Promise<Message> {
         return new Promise(async resolve => {
             await this.channel!.send(content);
-            await this.channel!.awaitMessages(msg => msg, { max: 1, time: 5000, errors: ['time'] })
+            await this.channel!.awaitMessages(this.responsesFrom ? this.responsesFromFilter : this.noFilter, {
+                max: 1,
+                time: timeout,
+                errors: ['time'],
+            })
                 .then(msgs => {
                     resolve(msgs.first());
                 })
@@ -46,8 +50,10 @@ export default class TestBot extends Discord.Client {
         });
     }
 
+    // all messages
     noFilter = (msg: Message) => true;
 
+    // only messages from user with specific id
     responsesFromFilter = (response: Message) => {
         return response.author.id === this.responsesFrom!;
     };

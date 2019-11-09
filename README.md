@@ -1,4 +1,4 @@
-# Discord Response Mock 
+# Discord Response Mock
 
 > Making the behavior of your discord bot testable.
 
@@ -45,7 +45,7 @@ client.write('message content', response => {
 
 **Mocha command test**
 
-A test for a command of your discord bot could look like this.
+A mocha test for a command of your discord bot could look like this.
 
 ```js
 import assert from 'assert';
@@ -54,28 +54,28 @@ import { ResponseClient } from 'discord-response-mock';
 const options = {
     messagePrefix: '!',
     specificUserId: '[YOUR_BOT_ID]',
-}
+    responseTimeout: 3000
+};
 
 let client;
 
-before(done => {
-    client = await new ResponseClient(options)
-        .setup('[TEST_GUILD_ID]', '[TEST_BOT_TOKEN]');
-    done();
+before(async () => {
+    client = await new ResponseClient(options).setup('[TEST_GUILD_ID]', '[TEST_BOT_TOKEN]');
 });
 
-describe('ping', () => {
+describe('ping', function () => {
+    this.timeout(options.responseTimeout);    // mochas default timeout is 2s
+
     it('should respond with correct message', done => {
         client.write('ping', response => {
             assert.equal(response.content, 'pong');
             done();
-        })
+        });
     });
 });
 
-after(done => {
+after(async () => {
     await client.cleanup();
-    done();
 });
 ```
 

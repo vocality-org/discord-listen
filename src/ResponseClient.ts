@@ -78,6 +78,9 @@ export class ResponseClient {
                 .getResponseTo(`${this.options.messagePrefix}${content}`, this.options.responseTimeout!)
                 .then((msg: Message) => {
                     callback(msg);
+                })
+                .catch(err => {
+                    console.log(err);
                 });
         }
     }
