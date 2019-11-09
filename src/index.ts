@@ -1,4 +1,4 @@
 import { ResponseClient, ResponseClientOptions } from './ResponseClient';
-import { MockClient } from './MockClient';
+import { MockClient, MockClientOptions } from './MockClient';
 
-export { ResponseClient, ResponseClientOptions, MockClient };
+export { ResponseClient, ResponseClientOptions, MockClient, MockClientOptions };

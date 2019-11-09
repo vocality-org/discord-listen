@@ -1,9 +1,8 @@
 import Discord, { Guild, TextChannel, Message } from 'discord.js';
 
-export default class TestBot extends Discord.Client {
+export default class Bot extends Discord.Client {
     private guild: Guild | undefined;
     private channel: TextChannel | undefined;
-    responsesFrom?: string;
 
     constructor(token: string, guildId: string) {
         super();
@@ -33,10 +32,10 @@ export default class TestBot extends Discord.Client {
         return this.channel!.send(content);
     }
 
-    getResponseTo(content: string, timeout: number): Promise<Message> {
+    getResponseTo(content: string, timeout: number, userId?: string): Promise<Message> {
         return new Promise(async resolve => {
             await this.channel!.send(content);
-            await this.channel!.awaitMessages(this.responsesFrom ? this.responsesFromFilter : this.noFilter, {
+            await this.channel!.awaitMessages(userId ? this.fromUser(userId) : this.noFilter, {
                 max: 1,
                 time: timeout,
                 errors: ['time'],
@@ -54,11 +53,11 @@ export default class TestBot extends Discord.Client {
     noFilter = (msg: Message) => true;
 
     // only messages from user with specific id
-    responsesFromFilter = (response: Message) => {
-        return response.author.id === this.responsesFrom!;
+    fromUser = (userId: string) => (response: Message) => {
+        return response.author.id === userId!;
     };
 
-    async createTemporaryChannel(preferedName?: string) {
+    async createTemporaryTextChannel(preferedName?: string) {
         let name = preferedName;
 
         if (!name) {
@@ -70,7 +69,7 @@ export default class TestBot extends Discord.Client {
         });
     }
 
-    async deleteTemporaryChannel() {
+    async deleteTemporaryTextChannel() {
         if (this.channel) {
             await this.channel.delete();
         }
