@@ -10,6 +10,12 @@ export default class Bot extends Discord.Client {
 
         this.on('ready', () => {
             this.guild = this.guilds.get(guildId);
+            if (!this.guild) {
+                console.info(
+                    `\nCan't find guild.\nTroubleshooting:\n\t- Update the guild id\n\t- Check that the testing bot is member of the testing guild`,
+                );
+                process.exit(1);
+            }
         });
     }
 
@@ -29,12 +35,13 @@ export default class Bot extends Discord.Client {
     }
 
     getMessageFrom(content: string) {
-        return this.channel!.send(content);
+        return this.sendMessage(content);
     }
 
     getResponseTo(content: string, timeout: number, userId?: string): Promise<Message> {
         return new Promise(async resolve => {
-            await this.channel!.send(content);
+            await this.sendMessage(content);
+
             await this.channel!.awaitMessages(userId ? this.fromUser(userId) : this.noFilter, {
                 max: 1,
                 time: timeout,
@@ -72,6 +79,18 @@ export default class Bot extends Discord.Client {
     async deleteTemporaryTextChannel() {
         if (this.channel) {
             await this.channel.delete();
+        }
+    }
+
+    private sendMessage(content: string) {
+        try {
+            return this.channel!.send(content);
+        } catch (error) {
+            console.log('Error caught in getResponseTo():', error.message);
+            console.info(
+                `\nCan't find text channel.\nTroubleshooting:\n\t- Update the text channel id\n\t- Check that the testing bot is member of the testing guild\n\t- Check that the testing bot has admin rights`,
+            );
+            process.exit(1);
         }
     }
 }
