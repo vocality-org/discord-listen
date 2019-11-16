@@ -2,7 +2,7 @@ name: gpr-publish
 
 on: 
   release:
-    types: [edited]
+    types: [released]
 
 jobs:
   publish:
