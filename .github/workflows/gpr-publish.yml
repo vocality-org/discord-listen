@@ -26,6 +26,7 @@ jobs:
     - name: publish
       run: |
         npm config set scope KaindlJulian
+        npm config set registry npm.pkg.github.com/
         npm config set //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN
         npm publish
 env: 
