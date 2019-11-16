@@ -20,7 +20,7 @@ For more information take a look at the [setup FAQ](guild_bot_setup.md).
 
 **Install**
 
-:exclamation: This package relies on the availability of the specified discord guild.
+:exclamation: This package relies on a connection to the given discord guild.
 
 ```
 npm install --save-dev discord-response-mock
@@ -90,65 +90,63 @@ const mock = await new MockClient().setup('[YOUR_GUILD_ID]', '[YOUR_BOT_TOKEN]')
 const message = await mock.message('message content');
 ```
 
-## How it works
-
-This package exports two classes. `ResponseClient` and `MockClient`. Both make use of a discord bot to programatically send and listen to messages.
-
-### ResponseClient
-
-Allows you to send a message to a channel and return the next message. By default this is the first message after the test bot sent its messgage. Also by default the bot will create a temporary text channel for each test setup which will be removed in the `.cleanup()` method. You can change different aspects via the `ResponseClientOptions`.
-
-#### Options
+### Options
 
 ```js
 const opts = {
     /**
-     * If set and a valid discord channelId, the tests will be performed on
+     * If set and a valid discord text channelId, the tests will be performed on
      * this channel. Otherwise a tempory channel will be created.
      *
      * @type {string}
-     * @memberof ResponseClientOptions
+     * @memberof ClientOptions
      */
-    channelId,
+    channelId?: string;
 
     /**
-     * Changes the name of the temporary testing channel.
+     * If set and a valid discord voice channelId, the bot will automatically
+     * connect to this channel.
      *
      * @type {string}
-     * @memberof ResponseClientOptions
+     * @memberof ClientOptions
      */
-    testChannelName,
+    voiceChannelId?: string;
 
     /**
-     * Sets a timeout on how long to wait for responses. Can only be
-     * between 100 and 10000 milliseconds.
+     * Changes the name of the temporary testing channels. voice and text.
      *
-     * @type {number}
-     * @memberof ResponseClientOptions
-     * @default 5000
+     * @type {string}
+     * @memberof ClientOptions
+     * @default 'Running tests | created: Mon, 01 Jan 2019 00:00:00 GMT'
      */
-    responseTimeout,
+    tempChannelName?: string;
 
     /**
      * Sets a string that will be prefixed to each message
      *
      * @type {string}
-     * @memberof ResponseClientOptions
+     * @memberof ClientOptions
      */
-    messagePrefix,
+    messagePrefix?: string;
+    
+    /**
+     * Sets a timeout on how long to wait for responses. Can only be between 100 and 10000 __milliseconds__.
+     *
+     * `100 <= timeout <= 10000`
+     *
+     * @type {number}
+     * @memberof ResponseClientOptions
+     * @default 5000
+     */
+    responseTimeout?: number;
 
     /**
-     * If set, only use the responses from this userId. Others are
-     * filtered out.
+     * If set, only use the responses from this userId. Others are filtered out.
      * If this field is not set, the first response will be returned.
      *
      * @type {string}
      * @memberof ResponseClientOptions
      */
-    specificUserId,
+    specificUserId?: string;
 };
 ```
-
-### MockClient
-
-Allows you to mock different discord.js objects. This is achieved by creating a temporary channel and sending the message there.
