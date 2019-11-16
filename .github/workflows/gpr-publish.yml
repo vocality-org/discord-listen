@@ -30,4 +30,6 @@ jobs:
         # auth to gpr with token (exists in every workflow by default)
         npm config set //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN
         npm publish
+env: 
+  CI: true
         
