@@ -25,11 +25,9 @@ jobs:
         npm run build
     - name: publish
       run: |
-        # Set the scope to the repository owner
         npm config set scope KaindlJulian
-        # auth to gpr with token (exists in every workflow by default)
         npm config set //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN
         npm publish
 env: 
   CI: true
-        
+    
