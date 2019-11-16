@@ -1,8 +1,9 @@
-import Discord, { Guild, TextChannel, Message } from 'discord.js';
+import Discord, { Guild, TextChannel, Message, VoiceChannel } from 'discord.js';
 
 export default class Bot extends Discord.Client {
     private guild: Guild | undefined;
     private channel: TextChannel | undefined;
+    private voiceChannel: VoiceChannel | undefined;
 
     constructor(token: string, guildId: string) {
         super();
@@ -31,6 +32,20 @@ export default class Bot extends Discord.Client {
 
         if (c instanceof TextChannel) {
             this.channel = c;
+        }
+    }
+
+    setVoiceChannel(voiceChannelId: string) {
+        const c = this.channels.get(voiceChannelId);
+
+        if (c instanceof VoiceChannel) {
+            this.voiceChannel = c;
+        }
+    }
+
+    async joinVoiceChannel() {
+        if (this.voiceChannel!.joinable) {
+            await this.voiceChannel!.join();
         }
     }
 

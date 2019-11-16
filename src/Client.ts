@@ -26,6 +26,11 @@ export class Client {
                     await this.bot!.createTemporaryTextChannel(this.options.tempChannelName);
                 }
 
+                if (this.options.voiceChannelId) {
+                    this.bot!.setVoiceChannel(this.options.voiceChannelId);
+                    await this.bot!.joinVoiceChannel();
+                }
+
                 resolve();
             });
         });
@@ -59,19 +64,28 @@ export class Client {
  */
 export interface ClientOptions {
     /**
-     * If set and a valid discord channelId, the tests will be performed on
+     * If set and a valid discord text channelId, the tests will be performed on
      * this channel. Otherwise a tempory channel will be created.
      *
      * @type {string}
-     * @memberof ResponseClientOptions
+     * @memberof ClientOptions
      */
     channelId?: string;
 
     /**
-     * Changes the name of the temporary testing channel.
+     * If set and a valid discord voice channelId, the bot will automatically
+     * connect to this channel.
      *
      * @type {string}
-     * @memberof ResponseClientOptions
+     * @memberof ClientOptions
+     */
+    voiceChannelId?: string;
+
+    /**
+     * Changes the name of the temporary testing channels. voice and text.
+     *
+     * @type {string}
+     * @memberof ClientOptions
      * @default 'Running tests | created: Mon, 01 Jan 2019 00:00:00 GMT'
      */
     tempChannelName?: string;
@@ -80,7 +94,7 @@ export interface ClientOptions {
      * Sets a string that will be prefixed to each message
      *
      * @type {string}
-     * @memberof ResponseClientOptions
+     * @memberof ClientOptions
      */
     messagePrefix?: string;
 }
