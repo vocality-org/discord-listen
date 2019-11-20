@@ -4,9 +4,17 @@
 
 <br/>
 <p>
+<!--Build-->
 <a href="https://github.com/KaindlJulian/discord-response-mock/actions?query=workflow%3Abuild"><img alt="build" src="https://github.com/KaindlJulian/discord-response-mock/workflows/build/badge.svg"></a>
+<!--npm ver-->
 <a href="https://www.npmjs.com/package/discord-response-mock"><img alt="npm" src="https://img.shields.io/npm/v/discord-response-mock?color=blue&label=%20npm"></a>
+<!--dependencies-->
+<a href="https://depfu.com/github/KaindlJulian/discord-response-mock?project_id=10173"><img alt="dependencies" src="https://badges.depfu.com/badges/e275d67f0a44c91d4752f5f25d337921/overview.svg"></a>
+<br/><br/>
+<!--npm banner-->
+<a href="https://www.npmjs.com/package/discord-response-mock"><img alt="dependencies" src="https://nodei.co/npm/discord-response-mock.png"></a>
 </p>
+<br/>
 
 ## Prerequisites
 
@@ -18,7 +26,7 @@ For more information take a look at the [setup FAQ](guild_bot_setup.md).
 
 ## Getting started
 
-**Install**
+#### Install
 
 :exclamation: This package relies on a connection to the given discord guild.
 
@@ -30,19 +38,23 @@ npm install --save-dev discord-response-mock
 
 ### Responses
 
-**Basic**
+#### Basic
 
 ```js
 import { ResponseClient } from 'discord-response-mock';
 
 const client = await new ResponseClient().setup('[TEST_GUILD_ID]', '[TEST_BOT_TOKEN]');
 
-client.write('message content', response => {
-    console.log(response.content);
+client.write('!ping', response => {
+    console.log(response.content); // pong
 });
 ```
 
-**Mocha command test**
+In the discord client this will look like:
+
+<a float="right" href="https://support.discordapp.com/hc/en-us/articles/204849977-How-do-I-create-a-server"><img src="media/example.png" width="250"></a>
+
+#### Mocha command test
 
 A mocha test for a command of your discord bot could look like this.
 
@@ -80,7 +92,7 @@ after(async () => {
 
 ### Mocking
 
-**Message Object**
+#### Message Object
 
 ```js
 import { MockClient } from 'discord-response-mock';
@@ -90,7 +102,7 @@ const mock = await new MockClient().setup('[YOUR_GUILD_ID]', '[YOUR_BOT_TOKEN]')
 const message = await mock.message('message content');
 ```
 
-### Options
+## Options
 
 ```js
 const opts = {
@@ -128,7 +140,7 @@ const opts = {
      * @memberof ClientOptions
      */
     messagePrefix?: string;
-    
+
     /**
      * Sets a timeout on how long to wait for responses. Can only be between 100 and 10000 __milliseconds__.
      *
