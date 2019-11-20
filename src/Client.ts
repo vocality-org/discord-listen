@@ -28,7 +28,6 @@ export class Client {
 
                 if (this.options.voiceChannelId) {
                     this.bot!.setVoiceChannel(this.options.voiceChannelId);
-                    await this.bot!.joinVoiceChannel();
                 }
 
                 resolve();
@@ -42,12 +41,13 @@ export class Client {
     }
 
     /**
-     * Join an existing voice channel per id. Also overrides the `voiceChannelId` option
+     * Join an existing voice channel. If id is not passed, the value of option `voiceChannelId`
+     * will be used.
      *
-     * @param {string} channelId
+     * @param {string} [channelId]
      * @memberof Client
      */
-    async joinVoiceChannel(channelId: string) {
+    async joinVoiceChannel(channelId?: string) {
         await this.bot!.joinVoiceChannel(channelId);
     }
 
