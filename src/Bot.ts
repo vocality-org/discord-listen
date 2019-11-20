@@ -3,7 +3,7 @@ import Discord, { Guild, TextChannel, Message, VoiceChannel } from 'discord.js';
 export default class Bot extends Discord.Client {
     private guild: Guild | undefined;
     private channel: TextChannel | undefined;
-    private voiceChannel: VoiceChannel | undefined;
+    private voiceChannel: VoiceChannel | undefined | null;
 
     constructor(token: string, guildId: string) {
         super();
@@ -43,9 +43,19 @@ export default class Bot extends Discord.Client {
         }
     }
 
-    async joinVoiceChannel() {
+    async joinVoiceChannel(id?: string) {
+        if (id) {
+            this.voiceChannel = null;
+            this.setVoiceChannel(id);
+        }
         if (this.voiceChannel!.joinable) {
             await this.voiceChannel!.join();
+        }
+    }
+
+    leaveVoiceChannel() {
+        if (this.voiceChannel) {
+            this.voiceChannel.leave();
         }
     }
 

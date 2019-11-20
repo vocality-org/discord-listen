@@ -42,6 +42,16 @@ export class Client {
     }
 
     /**
+     * Join an existing voice channel per id. Also overrides the `voiceChannelId` option
+     *
+     * @param {string} channelId
+     * @memberof Client
+     */
+    async joinVoiceChannel(channelId: string) {
+        await this.bot!.joinVoiceChannel(channelId);
+    }
+
+    /**
      * Disconnect the bot and delete temporary channel only if created
      *
      * @memberof Client
@@ -51,6 +61,11 @@ export class Client {
             if (!this.options.channelId) {
                 await this.bot.deleteTemporaryTextChannel();
             }
+
+            if (this.options.voiceChannelId) {
+                this.bot.leaveVoiceChannel();
+            }
+
             this.bot.destroy();
         }
     }

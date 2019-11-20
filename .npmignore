@@ -1,5 +1,7 @@
-.git/
+.gitignore
+.github/
 .vscode/
 node_modules/
 src/
 guild_bot_setup.md
+tsconfig.json
