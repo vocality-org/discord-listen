@@ -23,7 +23,9 @@ export class Client {
                 if (this.options.channelId) {
                     this.bot!.setChannel(this.options.channelId);
                 } else {
-                    await this.bot!.createTemporaryTextChannel(this.options.tempChannelName);
+                    await this.bot!.createTemporaryTextChannel(
+                        this.options.tempChannelName
+                    );
                 }
 
                 if (this.options.voiceChannelId) {

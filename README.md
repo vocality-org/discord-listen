@@ -18,9 +18,9 @@
 
 ## Prerequisites
 
--   ID of a discord guild to test in
--   The token of a bot application with admin rights on this guild
--   If you want to test a bot it should be running in a seperate process
+- ID of a discord guild to test in
+- The token of a bot application with admin rights on this guild
+- If you want to test a bot it should be running in a seperate process
 
 For more information take a look at the [setup FAQ](guild_bot_setup.md).
 
@@ -43,10 +43,13 @@ npm install --save-dev discord-response-mock
 ```js
 import { ResponseClient } from 'discord-response-mock';
 
-const client = await new ResponseClient().setup('[TEST_GUILD_ID]', '[TEST_BOT_TOKEN]');
+const client = await new ResponseClient().setup(
+  '[TEST_GUILD_ID]',
+  '[TEST_BOT_TOKEN]',
+);
 
-client.write('!ping', response => {
-    console.log(response.content); // pong
+client.write('!ping').then(response => {
+  console.log(response.content); // pong
 });
 ```
 
@@ -78,7 +81,7 @@ describe('ping', function () => {
     this.timeout(options.responseTimeout);    // mochas default timeout is 2s
 
     it('should respond with correct message', done => {
-        client.write('ping', response => {
+        client.write('ping').then(response => {
             assert.equal(response.content, 'pong');
             done();
         });
@@ -97,7 +100,10 @@ after(async () => {
 ```js
 import { MockClient } from 'discord-response-mock';
 
-const mock = await new MockClient().setup('[YOUR_GUILD_ID]', '[YOUR_BOT_TOKEN]');
+const mock = await new MockClient().setup(
+  '[YOUR_GUILD_ID]',
+  '[YOUR_BOT_TOKEN]',
+);
 
 const message = await mock.message('message content');
 ```
