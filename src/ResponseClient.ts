@@ -23,21 +23,23 @@ export class ResponseClient extends Client {
      * @param {(response: Message) => void} callback
      * @memberof ResponseClient
      */
-    write(content: string, callback: (response: Message) => void) {
-        if (this.bot) {
-            this.bot
-                .getResponseTo(
-                    `${this.options.messagePrefix}${content}`,
-                    this.options.responseTimeout!,
-                    this.options.specificUserId,
-                )
-                .then((msg: Message) => {
-                    callback(msg);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        }
+    write(content: string) {
+        return new Promise<Message>((resolve, reject) => {
+            if (this.bot) {
+                this.bot
+                    .getResponseTo(
+                        `${this.options.messagePrefix}${content}`,
+                        this.options.responseTimeout!,
+                        this.options.specificUserId
+                    )
+                    .then((msg: Message) => {
+                        resolve(msg);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    });
+            }
+        });
     }
 }
 
