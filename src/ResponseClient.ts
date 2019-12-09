@@ -1,4 +1,4 @@
-import { Message } from 'discord.js';
+import { Message, MessageReaction, User } from 'discord.js';
 import { Client, ClientOptions } from './Client';
 
 const DEFAULT_TIMEOUT = 5000;
@@ -39,6 +39,35 @@ export class ResponseClient extends Client {
                         reject(err);
                     });
             }
+        });
+    }
+
+    /**
+     * Adds a reaction collector to a message and invokes the callback on each reaction that passes the filter.
+     * If the filter is not set all reactions qualify.
+     *
+     * @param {Message} message
+     * @param {number} duration
+     * @param {(reaction: MessageReaction) => void} callback
+     * @param {(reaction: MessageReaction, user: User) => boolean} [filter]
+     * @memberof ResponseClient
+     */
+    onReaction(
+        message: Message,
+        duration: number,
+        callback: (reaction: MessageReaction) => void,
+        filter?: (reaction: MessageReaction, user: User) => boolean
+    ) {
+        if (!filter) {
+            filter = () => true;
+        }
+
+        const collector = message.createReactionCollector(filter, {
+            time: duration,
+        });
+
+        collector.on('collect', (reaction, collector) => {
+            callback(reaction);
         });
     }
 }
