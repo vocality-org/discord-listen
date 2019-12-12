@@ -8,8 +8,6 @@
 <a href="https://github.com/KaindlJulian/discord-response-mock/actions?query=workflow%3Abuild"><img alt="build" src="https://github.com/KaindlJulian/discord-response-mock/workflows/build/badge.svg"></a>
 <!--npm ver-->
 <a href="https://www.npmjs.com/package/discord-response-mock"><img alt="npm" src="https://img.shields.io/npm/v/discord-response-mock?color=blue&label=%20npm"></a>
-<!--dependencies-->
-<a href="https://depfu.com/github/KaindlJulian/discord-response-mock?project_id=10173"><img alt="dependencies" src="https://badges.depfu.com/badges/e275d67f0a44c91d4752f5f25d337921/overview.svg"></a>
 <br/><br/>
 <!--npm banner-->
 <a href="https://www.npmjs.com/package/discord-response-mock"><img alt="dependencies" src="https://nodei.co/npm/discord-response-mock.png"></a>
