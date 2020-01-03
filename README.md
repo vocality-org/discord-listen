@@ -3,15 +3,15 @@
 > Making the behavior of your discord bot testable
 
 <br/>
+
 <p>
 <!--Build-->
 <a href="https://github.com/KaindlJulian/discord-response-mock/actions?query=workflow%3Abuild"><img alt="build" src="https://github.com/KaindlJulian/discord-response-mock/workflows/build/badge.svg"></a>
+<!--gpr ver-->
+<a href="https://github.com/vocality-org/discord-listen/packages/96794"><img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/vocality-org/discord-listen?color=blue&label=gpr&logo=github&logoColor=lightgrey"></a>
 <!--npm ver-->
-<a href="https://www.npmjs.com/package/discord-response-mock"><img alt="npm" src="https://img.shields.io/npm/v/discord-response-mock?color=blue&label=%20npm"></a>
-<br/><br/>
-<!--npm banner-->
-<a href="https://www.npmjs.com/package/discord-response-mock"><img alt="dependencies" src="https://nodei.co/npm/discord-response-mock.png"></a>
-</p>
+<a href="https://www.npmjs.com/package/@vocality-org/discord-listen"><img alt="npm" src="https://img.shields.io/npm/v/@vocality-org/discord-listen?color=blue&label=%20npm"></a>
+
 <br/>
 
 ## Prerequisites
