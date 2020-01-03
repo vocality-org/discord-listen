@@ -1,4 +1,4 @@
-# Discord Response Mock
+# Discord Listen
 
 > Making the behavior of your discord bot testable
 
@@ -16,9 +16,9 @@
 
 ## Prerequisites
 
-- ID of a discord guild to test in
-- The token of a bot application with admin rights on this guild
-- If you want to test a bot it should be running in a seperate process
+-   ID of a discord guild to test in
+-   The token of a bot application with admin rights on this guild
+-   If you want to test a bot it should be running in a seperate process
 
 For more information take a look at the [setup FAQ](guild_bot_setup.md).
 
@@ -38,16 +38,16 @@ npm install --save-dev discord-response-mock
 
 #### Basic
 
-```js
-import { ResponseClient } from 'discord-response-mock';
+```ts
+import { ResponseClient } from '@vocality/discord-listen';
 
 const client = await new ResponseClient().setup(
-  '[TEST_GUILD_ID]',
-  '[TEST_BOT_TOKEN]',
+    '[TEST_GUILD_ID]',
+    '[TEST_BOT_TOKEN]'
 );
 
 client.write('!ping').then(response => {
-  console.log(response.content); // pong
+    console.log(response.content); // pong
 });
 ```
 
@@ -59,9 +59,9 @@ In the discord client this will look like:
 
 A mocha test for a command of your discord bot could look like this.
 
-```js
+```ts
 import assert from 'assert';
-import { ResponseClient } from 'discord-response-mock';
+import { ResponseClient } from '@vocality/discord-response-mock';
 
 const options = {
     messagePrefix: '!',
@@ -95,12 +95,12 @@ after(async () => {
 
 #### Message Object
 
-```js
-import { MockClient } from 'discord-response-mock';
+```ts
+import { MockClient } from '@vocality/discord-response-mock';
 
 const mock = await new MockClient().setup(
-  '[YOUR_GUILD_ID]',
-  '[YOUR_BOT_TOKEN]',
+    '[YOUR_GUILD_ID]',
+    '[YOUR_BOT_TOKEN]'
 );
 
 const message = await mock.message('message content');
@@ -108,7 +108,7 @@ const message = await mock.message('message content');
 
 ## Options
 
-```js
+```ts
 const opts = {
     /**
      * If set and a valid discord text channelId, the tests will be performed on
