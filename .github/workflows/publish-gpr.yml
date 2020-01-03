@@ -1,21 +1,17 @@
-name: gpr-publish
+name: gpr publish
 on:
-  release:
-    types:
-      - created
+    release:
+        types: [published]
 jobs:
-  main:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com
-          scope: '@KaindlJulian'
-      - name: npm publish
-        run: |
-          npm ci
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '12.x'
+                  registry-url: 'https://npm.pkg.github.com'
+            - run: npm install
+            - run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

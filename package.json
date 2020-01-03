@@ -1,17 +1,17 @@
 {
-    "name": "discord-response-mock",
-    "version": "0.3.2",
+    "name": "@vocality-org/discord-response-mock",
+    "version": "0.3.3",
     "description": "Makes the behavior of your discord bot testable",
     "main": "build/index.js",
     "author": "Julian Kaindl <kaindl745@gmail.com>",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/KaindlJulian/discord-response-mock.git"
+        "url": "https://github.com/vocality-org/discord-response-mock.git"
     },
-    "homepage": "https://github.com/KaindlJulian/discord-response-mock",
+    "homepage": "https://github.com/vocality-org/discord-response-mock",
     "bugs": {
-        "url": "https://github.com/KaindlJulian/discord-response-mock/issues"
+        "url": "https://github.com/vocality-org/discord-response-mock/issues"
     },
     "keywords": [
         "discord",
