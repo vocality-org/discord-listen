@@ -1,6 +1,6 @@
 {
     "name": "@vocality-org/discord-listen",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "Makes the behavior of your discord bot testable",
     "main": "build/index.js",
     "author": "Julian Kaindl <kaindl745@gmail.com>",
