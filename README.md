@@ -28,11 +28,12 @@ For more information take a look at the [setup FAQ](guild_bot_setup.md).
 
 #### Install
 
-:exclamation: This package relies on a connection to the given discord guild.
+from [npm](https://www.npmjs.com/package/@vocality-org/discord-listen) or [gpr](https://github.com/vocality-org/discord-listen/packages/96794) with
 
 ```
-npm install --save-dev discord-listen
+npm install --save-dev @vocality-org/discord-listen
 ```
+
 
 ## Examples
 
