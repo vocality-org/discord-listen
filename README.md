@@ -29,7 +29,7 @@ For more information take a look at the [setup FAQ](guild_bot_setup.md).
 :exclamation: This package relies on a connection to the given discord guild.
 
 ```
-npm install --save-dev discord-response-mock
+npm install --save-dev discord-listen
 ```
 
 ## Examples
@@ -39,7 +39,7 @@ npm install --save-dev discord-response-mock
 #### Basic
 
 ```ts
-import { ResponseClient } from '@vocality/discord-listen';
+import { ResponseClient } from '@vocality-org/discord-listen';
 
 const client = await new ResponseClient().setup(
     '[TEST_GUILD_ID]',
@@ -61,7 +61,7 @@ A mocha test for a command of your discord bot could look like this.
 
 ```ts
 import assert from 'assert';
-import { ResponseClient } from '@vocality/discord-response-mock';
+import { ResponseClient } from '@vocality-org/discord-response-mock';
 
 const options = {
     messagePrefix: '!',
@@ -96,7 +96,7 @@ after(async () => {
 #### Message Object
 
 ```ts
-import { MockClient } from '@vocality/discord-response-mock';
+import { MockClient } from '@vocality-org/discord-response-mock';
 
 const mock = await new MockClient().setup(
     '[YOUR_GUILD_ID]',
