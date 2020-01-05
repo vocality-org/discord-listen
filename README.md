@@ -1,3 +1,5 @@
+<img src="./media/logo.svg" height="150px" align="left">
+
 # Discord Listen
 
 > Making the behavior of your discord bot testable
@@ -13,6 +15,7 @@
 <a href="https://www.npmjs.com/package/@vocality-org/discord-listen"><img alt="npm" src="https://img.shields.io/npm/v/@vocality-org/discord-listen?color=blue&label=%20npm"></a>
 
 <br/>
+<br/><br/>
 
 ## Prerequisites
 
