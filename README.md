@@ -1,8 +1,9 @@
-<img src="./media/logo.svg" height="160px" align="left">
+<p align="center">
+    <img src="./media/logo.svg" height="160px">
+<h1 align="center">Discord Listen</h1>
+<h4 align="center">Making the behavior of your discord bot testable</h4>
+</p>
 
-# Discord Listen
-
-> Making the behavior of your discord bot testable
 
 <br/>
 
