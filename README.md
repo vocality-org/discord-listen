@@ -1,4 +1,4 @@
-<img src="./media/logo.svg" height="150px" align="left">
+<img src="./media/logo.svg" height="160px" align="left">
 
 # Discord Listen
 
