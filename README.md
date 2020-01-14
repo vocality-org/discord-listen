@@ -64,7 +64,7 @@ A mocha test for a command of your discord bot could look like this.
 
 ```ts
 import assert from 'assert';
-import { ResponseClient } from '@vocality-org/discord-response-mock';
+import { ResponseClient } from '@vocality-org/discord-listen';
 
 const options = {
     messagePrefix: '!',
@@ -99,7 +99,7 @@ after(async () => {
 #### Message Object
 
 ```ts
-import { MockClient } from '@vocality-org/discord-response-mock';
+import { MockClient } from '@vocality-org/discord-listen';
 
 const mock = await new MockClient().setup(
     '[YOUR_GUILD_ID]',
